@@ -12,6 +12,11 @@ def to_float(end_nums):
 # print(to_float([217, 184, 130, 65])) # 16.340258
 # print(to_float([122, 175, 137, 65])) # 17.210682
 
+def RPM_to_MPH(RPM):
+    diameter = 20.5 # inches
+    inches_per_minute = diameter * 3.14159 * RPM
+    return inches_per_minute / 63360 * 60
+
 # with open (os.getcwd().replace('per/PER-challenge', '')+'TaskB.txt', 'r') as f:
 #     header = f.readline()
     
