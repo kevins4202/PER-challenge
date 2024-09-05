@@ -6,6 +6,7 @@ How to run the code:
 ```sh
   git clone https://github.com/kevins4202/PER-challenge.git
 ```
+Make sure the .csv file is in the same directory as the repository folder (one level removed from the .py files)
 2. Run the program using 
 ```sh
   python3 partA.py
