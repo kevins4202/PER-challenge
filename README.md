@@ -6,22 +6,41 @@ How to run the code:
 ```sh
   git clone https://github.com/kevins4202/PER-challenge.git
 ```
-Make sure the .csv file is in the same directory as the repository folder (one level removed from the .py files)
 2. Run the program using 
 ```sh
   python3 partA.py
 ```
-Results
-Min speed:  0.18995884 MPH
-Justification: I decided to use the smallest non-zero speed (since the car will always have to go to zero speed). To Calculate the speed, I took the average of the four wheel speeds. I was thinking about taking an average for each side (front left, back left and front right, back right) and calculating some kind of angle that would give a better measurement of speed, but I could not figure out a formula. The minimum speed is basically the smallest non-zero average of the four wheel speeds.
-Max speed:  49.681338499999995 MPH
-Justification: This is similar to the calculation for minimum speed, except I used the max function instead of min. I used the same method to calculate the speed.  
-Avg speed:  20.961331817332038 MPH
+Results\
+Min speed:  0.18995884 MPH\
+Justification: I decided to use the smallest non-zero speed (since the car will always have to go to zero speed). To Calculate the speed, I took the average of the four wheel speeds. I was thinking about taking an average for each side (front left, back left and front right, back right) and calculating some kind of angle that would give a better measurement of speed, but I could not figure out a formula. The minimum speed is basically the smallest non-zero average of the four wheel speeds.\
+Max speed:  49.681338499999995 MPH\
+Justification: This is similar to the calculation for minimum speed, except I used the max function instead of min. I used the same method to calculate the speed.\
+Avg speed:  20.961331817332038 MPH\
 Justification: Since the average is the total/time, I added the speeds at each time interval. I assumed that if at a specific time, the speeds of the wheels were not provided, that the car would maintain relatively the same speed (so I did not update the variables). Even when the speed was 0, after it started moving for the first time I accounted for every speed at every time. For the denominator, I chose to start keeping track of time when the car started moving to the end. I could have ended time when the car stopped, but I was struggling to think of a method and also believed that the excess time would have minimal impact over such a long time frame. 
-Total energy:  4.160638179398205 kWh
-Justification: Using the formula P = I * V, I added up the power at every interval to get the Riemann sum for Energy. It did non matter when the car started moving since everything factors into total energy, whether the car is in motion or not. I then had to convert to kW by multiplying by 0.001 (the multiplier variable), then converting hours by multiplying by 1 / 3600000. 
+Total energy:  4.160638179398205 kWh\
+Justification: Using the formula P = I * V, I added up the power at every interval to get the Riemann sum for Energy. It did not matter when the car started moving since everything factors into total energy, whether the car is in motion or not. I then had to convert to kW by multiplying by 0.001 (the multiplier variable), then converting hours by multiplying by 1 / 3600000. \\
 
-Overall, I think I should have checked more for edge cases such as zeros or infinities, but I think I handled them well and they would have minimal impact over such a long time period.
+Overall, I think I should have checked more for edge cases such as zeros or infinities, but I think I handled them well and they would have minimal impact over such a long time period.\\
 
-Part 2
+Part 2\
+Run the program using 
+```sh
+  python3 partA.py
+```
+Results\
+Min speed:  0.6621164017326994 MPHH\
+Justification: Like part A, I decided to use the smallest non-zero speed. I used the average of the left and right wheel speeds. To deal with faulty data, I noticed some of the values were more than 700 miles per hour, or negative which is obviously not possible. Usually this occured with one side seeming to have a normal speed and the other being much greater. I decided to solve this problem by only updating the speed when the difference is less than 50 MPH and the speed was positive. I think I could have analyzed the data deeper, but I could not think of a way to detect when data was corrupt. \
+Max speed:  67.67033311454048 MPH\
+Justification: My method of using the absolute difference seemed to produce a reasonable max speed, but I do not know if this is right. \
+Average speed:  29.02550708230085 MPH\
+Justification: I added the speeds at each time interval, multiplied by delta time. I assumed that the time values were not corrupt but this could have been possible and easy to check by comparing the current one to the previous/next one.
+Total energy:  6.267346850672142 kWhh\
+Justification: I used a similar method as before, except that I did not count negative values. I looked at the max/min voltage and current and they seemed reasonable at 200-300 volts or amps, so I did not filter out any positive values. \
+
+I am sure I missed some cases and that my values have some error, but comparing them to the first part they were similar. \
+\
+Part 3:
+
+
+
 
