@@ -25,8 +25,9 @@ Overall, I think I should have checked more for edge cases such as zeros or infi
 Part 2\
 Run the program using 
 ```sh
-  python3 partA.py
+  python3 partB.py
 ```
+Make sure to have the .txt file in the same directory as partB.py\
 Results\
 Min speed:  0.6621164017326994 MPHH\
 Justification: Like part A, I decided to use the smallest non-zero speed. I used the average of the left and right wheel speeds. To deal with faulty data, I noticed some of the values were more than 700 miles per hour, or negative which is obviously not possible. Usually this occured with one side seeming to have a normal speed and the other being much greater. I decided to solve this problem by only updating the speed when the difference is less than 50 MPH and the speed was positive. I think I could have analyzed the data deeper, but I could not think of a way to detect when data was corrupt. \
@@ -40,7 +41,22 @@ Justification: I used a similar method as before, except that I did not count ne
 I am sure I missed some cases and that my values have some error, but comparing them to the first part they were similar. \
 \
 Part 3:
-
-
-
-
+Encode the .csv file using 
+```sh
+  python3 encode.py
+```
+Decode the .bin file using
+Run the program using 
+```sh
+  python3 decode.py
+```
+The decoded file will appear in the parent directory of the repository since it is large.\
+Extensibility\
+My data format is self-explanatory because there is no external file required. It is like the csv but with spaces and colons as separators. I chose this because it would be easy to both encode and decode, as well as understand\
+2. Space efficiency: I chose to encode the files in binary since that is very space efficient. I tried hex at first but that was not as efficient as binary. I also compressed it using the zlib library but had some issues with decompression (the code does not work and I am getting blank lines when reading the file).\
+3. Maintainability\
+I think the code is easy to understand because it is in two main sections: the first has all the value descriptions and indicies, the second has all of the data. I do not use any complex libraries and only use simple string and binary encoding operations.
+4. Portability\
+My code could be converted into other languages since it is easy to understand, but I also use a library to compress/encode it that could be problematic for other languages. I tried to work with a specific endianness at first with hex but the result was too large of a file so I switched to binary instead, which could create problems with endianness.\
+5. Corruption\
+I was considering using huffman encoding for the words, but I did not have enough time and the algorithm was fairly complex.
